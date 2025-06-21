@@ -44,7 +44,7 @@ current_player = "X"
 while True:
     print_board(board)
 
-    move = input(f"Player {current_player}, enter your move (1–9): ")
+    move = input(f"Player {player}, enter your move (1–9): ")
     if not move.isdigit() or not (1 <= int(move) <= 9):
         print(" Invalid input! Please enter a number from 1 to 9.")
         continue
@@ -55,15 +55,15 @@ while True:
 
     # Checking if the cell is already taken
     if board[row][col] not in ["X", "O"]:
-        board[row][col] = current_player
+        board[row][col] = player
     else:
         print("That cell is already taken. Try another.")
         continue
 
     # Check if player won
-    if check_winner(board, current_player):
+    if check_winner(board, player):
         print_board(board)
-        print(f" Player {current_player} wins!")
+        print(f" Player {player} wins!")
         break
 
     # Check for draw
@@ -73,7 +73,7 @@ while True:
         break
 
     # Switch player
-    current_player = "O" if current_player == "X" else "X"
+    current_player = "O" if player == "X" else "X"
 
 
 
